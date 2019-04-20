@@ -1,0 +1,42 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/stylesheets/landing.css">
+  <div class="photosingle">
+    <div class="">
+      <div class="">
+            <div class="">
+                <strong><%= file.metadata.author %></strong><br>
+                <strong><%= file.uploadDate %></strong><br>
+                <img class="img-responsive" src="/image/<%= file.filename %>">
+                <p>Tag(s):<%= file.metadata.tags %>
+                 <% if(currentUser && file.metadata.author == (currentUser.username) || currentUser && currentUser.isAdmin == true){ %>
+                   <form method="POST" action="/files/<%= file.filename %>" >
+                    <input type="text" name="tag" placeholder="new tag">&nbsp&nbsp
+                   <button class="btn btn-danger">submit</button>
+                   </form>
+                 <% } %>
+                </p>
+                <br><br>
+                <% comments.forEach(function(comment) { %>
+                <strong><%= comment.user %></strong>&nbsp&nbsp<%= comment.comment %><br>
+                <% if(currentUser && currentUser.isAdmin == true){ %>
+                  <form method="POST" action="/comment/<%= comment._id %>?_method=DELETE">
+                  <button class="btn btn-danger">Delete Comment</button>
+                  </form>
+                <% } %>
+                <% }) %>
+                <hr>
+                <form method="POST" action="/<%= file.filename %>/new-comments">
+                 <input type="text" name="comment" placeholder="Add comment">&nbsp&nbsp
+                <button class="btn btn-primary">post</button><br>
+                </form><br><br>
+                <% if(currentUser && file.metadata.author == (currentUser.username) || currentUser && currentUser.isAdmin == true){ %>
+                    <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
+                    <button class="btn btn-danger">Delete image</button>
+                    </form>
+                  <% } %>
+            </div>
+            <a class="btn btn-primary" href="/Results">See another images</a>
+      </div>
+    </div>
+  </div>
+<% include partials/footer %>

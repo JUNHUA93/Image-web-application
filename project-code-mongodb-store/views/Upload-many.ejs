@@ -1,0 +1,35 @@
+<% include ./partials/header %>
+  <div class="container1">
+    <div class="row">
+        <h1 style="text-align: center">Uploads</h1>
+        <div style="width: 30%; margin: 25px auto;">
+        <form action="/upload-many" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            Image 1 <br><input type="file" name="file" id="file" class="custom-file-input"><br>
+            <label for="file" class="custom-file-label" name="filename"></label>
+          </div>
+          <div class="form-group">
+            Image 2 <br><input type="file" name="file" id="file" class="custom-file-input"><br>
+            <label for="file" class="custom-file-label" name="filename"></label>
+          </div>
+          <div class="form-group">
+            Image 3 <br><input type="file" name="file" id="file" class="custom-file-input"><br>
+            <label for="file" class="custom-file-label" name="filename"></label>
+          </div>
+          <div class="form-group">
+            Image 4 <br><input type="file" name="file" id="file" class="custom-file-input"><br>
+            <label for="file" class="custom-file-label" name="filename"></label>
+          </div>
+          <div class="form-group">
+            Image 5 <br><input type="file" name="file" id="file" class="custom-file-input"><br>
+            <label for="file" class="custom-file-label" name="filename"></label>
+          </div>
+          <div class="form-group">
+            Tag(Multiple tags can be separated by space) <br><input type="text" name="tag" id="tag"><br>
+          </div>
+          <input type="submit" value="Submit" class="btn btn-primary btn-block"><br>
+          <a href="/index" class="btn btn-default btn-lg">Cancel</a>
+        </form>
+      </div>
+  </div>
+<% include partials/footer %>

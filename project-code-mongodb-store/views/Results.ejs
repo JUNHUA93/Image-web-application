@@ -1,0 +1,36 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/stylesheets/landing.css">
+  <div class="photocontent">
+    <div class style="display:flex; flex-wrap: wrap;">
+      <div class>
+        <% if(files){ %>
+          <% files.forEach(function(file) { %>
+            <div class="card">
+              <% if(file.isImage) { %>
+                <div class="thumbnail">
+                <img src="image/<%= file.filename %>">
+                </div>
+                <p>
+                  <a href="/image-info/<%= file.filename%>" class="info btn btn-primary">More Info</a>
+                </p>
+                <br><br>
+                <% } else { %>
+                  <%= file.filename %>
+                    <% } %>
+            </div>
+            <% }) %>
+            <br><br>
+            <% if(currentUser && currentUser.isAdmin == true){ %>
+              <form method="POST" action="/all?_method=DELETE">
+              <button class="btn btn-danger">Delete All images</button>
+              </form>
+            <% } %>
+            <p><a href="/index" class="btn btn-default btn-lg">Go Back</a></p>
+              <% } else { %>
+                <p>No Image is Exists!</p>
+                <a href="/index" class="btn btn-default btn-lg">Go Back</a>
+                <% } %>
+      </div>
+    </div>
+  </div>
+<% include partials/footer %>

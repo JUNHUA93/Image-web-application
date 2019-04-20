@@ -1,0 +1,17 @@
+<% include ./partials/header %>
+  <div class="container1">
+    <div class="row">
+        <h1 style="text-align: center">Uploads</h1>
+        <div style="width: 30%; margin: 25px auto;">
+        <form action="/admin-contec/<%= currentUser.email %> " method="POST">
+          <div class="form-group">
+            Email password  <br><input type="text" name="pass" placeholder="Please enter your email password here."><br>
+            Title  <br><input type="text" name="title" placeholder="Please enter your email object here."><br>
+            Message <br><input type="text" name="Message" placeholder="Please enter your message here."><br>
+          </div>
+          <input type="submit" value="Send" class="btn btn-primary btn-block"><br>
+          <a href="/index" class="btn btn-default btn-lg">Cancel</a>
+        </form>
+      </div>
+  </div>
+<% include partials/footer %>
